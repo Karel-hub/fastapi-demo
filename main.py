@@ -14,10 +14,10 @@ def read_root():
     return {"Hello": "Karel"}
 
 @app.get("/countries")
-def read_countries():
-    return [asdict(country) for country in countries]
+def list_countries():
+    return [asdict(country) for country in countries.values()]
 
 
-@app.get("/items/{item_id}")
-def read_item(item_id: int, q: Optional[str] = None):
-    return {"item_id": item_id, "q": q}
+@app.get("/country/{item_id}")
+def get_country(item_id: str):
+    return countries[item_id]

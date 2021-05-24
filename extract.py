@@ -7,12 +7,11 @@ import csv
 
 def extract_countries():
     print("Extracting countries...")
-    countries = []
+    countries = {}
     with open("/home/karel/fastapi-demo/data/SDGCountry.csv") as f:
         reader = csv.reader(f)
         for i, col in enumerate(reader):
-            country = Country(id=col[0], short_name=col[1])
-            countries.append(country)
+            countries[col[0]] = Country(id=col[0], short_name=col[1])
 
     print(f"Extracted {len(countries)} countries")
     return countries
@@ -30,8 +29,6 @@ def extract_countries():
 #     for i, col in enumerate(reader):
 #         record = Records(id_rec=i, country_id=col[1], indicator_id=col[3])
 #         records.append(record)
-
-print("end")
 
 
            
