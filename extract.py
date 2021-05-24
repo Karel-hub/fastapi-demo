@@ -6,7 +6,6 @@ import csv
 
 
 def extract_countries():
-    print("Extracting countries...")
     countries = {}
     with open("/home/karel/fastapi-demo/data/SDGCountry.csv") as f:
         reader = csv.reader(f)
@@ -30,6 +29,7 @@ def extract_records():
         records = {}
         reader = csv.reader(f)
         header_row = []
+        record_id = 0
         for i, cols in enumerate(reader):
             if i == 0:
                 header_row = cols
@@ -37,22 +37,17 @@ def extract_records():
                 break
             else:
                 for col_ind in range(4, 34):
-                    records[i-1] = Records(
-                        id=i-1,
+                    records[record_id] = Records(
+                        id=record_id,
                         country_id=cols[1],
                         indicator_id=cols[3],
                         year=int(header_row[col_ind]),
                         value=cols[col_ind]
                     )
+                    record_id += 1
         
+        print(f"Extracted {len(records)} records")
         return records
-
-
-test_records = extract_records()
-print(test_records)
-
-           
-
 
 
 # Dataclass representation
