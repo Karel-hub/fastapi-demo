@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from typing import Optional
 
 @dataclass
 class Country:
@@ -15,6 +16,6 @@ class Records:
     id: str    
     country_id:str
     indicator_id:str
-    year: str
-    value: int
+    year: int
+    value: float
 
