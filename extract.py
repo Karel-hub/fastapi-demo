@@ -33,8 +33,8 @@ def extract_records():
         for i, cols in enumerate(reader):
             if i == 0:
                 header_row = cols
-            elif i > 10:
-                break
+            # elif i > 10:
+            #     break
             else:
                 for col_ind in range(4, 34):
                     records[record_id] = Records(
